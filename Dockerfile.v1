@@ -1,0 +1,17 @@
+FROM ubuntu:18.04
+MAINTAINER Credo Ngoukeng <credongoukeng.aws@gmail.com>
+
+# Update the package lists and install nginx
+RUN apt-get update && apt-get install -y nginx
+
+# Expose port 80
+EXPOSE 80
+
+# Copy the contents of the static-website-example directory to /var/www/html/
+COPY static-website-example/ /var/www/html/
+
+# Start the nginx service when a container is launched
+CMD ["nginx", "-g", "daemon off;"]
+
+
+
